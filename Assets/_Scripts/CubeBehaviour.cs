@@ -33,10 +33,17 @@ public class CubeBehaviour : MonoBehaviour
         min = Vector3.Scale(bounds.min, transform.localScale) + transform.position;
     }
 
+    void FixedUpdate()
+    {
+        // physics related calculations
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
 
         Gizmos.DrawWireCube(transform.position, Vector3.Scale(new Vector3(1.0f, 1.0f, 1.0f), transform.localScale));
+
+        //Gizmos.DrawWireSphere(transform.position, transform.localScale.x);
     }
 }
