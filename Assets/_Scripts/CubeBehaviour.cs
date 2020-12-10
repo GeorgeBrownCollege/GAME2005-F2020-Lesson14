@@ -11,6 +11,7 @@ public class CubeBehaviour : MonoBehaviour
     public Vector3 max;
     public Vector3 min;
     public bool isColliding;
+    public bool debug;
     public List<CubeBehaviour> contacts;
 
     private MeshFilter meshFilter;
@@ -19,6 +20,7 @@ public class CubeBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        debug = false;
         meshFilter = GetComponent<MeshFilter>();
 
         bounds = meshFilter.mesh.bounds;
@@ -40,10 +42,11 @@ public class CubeBehaviour : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.magenta;
+        if (debug)
+        {
+            Gizmos.color = Color.magenta;
 
-        Gizmos.DrawWireCube(transform.position, Vector3.Scale(new Vector3(1.0f, 1.0f, 1.0f), transform.localScale));
-
-        //Gizmos.DrawWireSphere(transform.position, transform.localScale.x);
+            Gizmos.DrawWireCube(transform.position, Vector3.Scale(new Vector3(1.0f, 1.0f, 1.0f), transform.localScale));
+        }
     }
 }
